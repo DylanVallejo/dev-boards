@@ -4,11 +4,16 @@ package com.hiring.devs.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.checkerframework.checker.units.qual.C;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.List;
 
 @Entity
 @Data
+@DynamicInsert
+@DynamicUpdate
+@Table(name = "developer")
 public class Developer {
 
     @Id

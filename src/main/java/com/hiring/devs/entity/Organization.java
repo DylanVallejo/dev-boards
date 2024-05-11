@@ -1,11 +1,17 @@
 package com.hiring.devs.entity;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.List;
 
 @Entity
+@Data
+@DynamicInsert
+@DynamicUpdate
+@Table(name = "organization")
 public class Organization {
 
     @Id
@@ -37,7 +43,7 @@ public class Organization {
     @Column(name = "password")
     private String password;
 
-//    @OneToMany
-//    private List<Position> positions;
+    @OneToMany
+    private List<Position> position;
 
 }
