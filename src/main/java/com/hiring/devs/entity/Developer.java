@@ -1,6 +1,7 @@
 package com.hiring.devs.entity;
 
 
+import com.hiring.devs.dto.TechnologyDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.checkerframework.checker.units.qual.C;

@@ -25,7 +25,6 @@ public class DeveloperController {
 
     @PostMapping(value = "register")
     public ResponseEntity<Developer> registerDev(@RequestBody Developer developer){
-
         Developer newDeveloper =  developerService.register(developer);
         return ResponseEntity.ok(newDeveloper);
     }

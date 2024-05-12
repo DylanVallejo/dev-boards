@@ -2,10 +2,16 @@ package com.hiring.devs.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.List;
 
 @Entity
+@Data
+@DynamicInsert
+@DynamicUpdate
 public class Technology {
 
     @Id
@@ -15,6 +21,8 @@ public class Technology {
 
     private String name;
 
+    private Boolean is_framework;
+
     @Lob
     private byte[] logo;
 
@@ -23,5 +31,7 @@ public class Technology {
 
     @ManyToMany(mappedBy = "technology")
     private List<Developer> developer;
+
+
 
 }
