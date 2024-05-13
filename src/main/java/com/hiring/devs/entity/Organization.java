@@ -19,7 +19,7 @@ public class Organization {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "organization_name")
+    @Column(name = "organization_name", unique = true)
     private String organization_name;
 
     @Column(name = "first_name")

@@ -1,10 +1,9 @@
 package com.hiring.devs.entity;
 
 
-import com.hiring.devs.dto.TechnologyDto;
+
 import jakarta.persistence.*;
 import lombok.Data;
-import org.checkerframework.checker.units.qual.C;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -28,7 +27,7 @@ public class Developer {
     @Column(name = "last_name")
     private String last_name;
 
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
 
     @Column(name = "address")
@@ -43,7 +42,11 @@ public class Developer {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(
+            name = "developer_technology", joinColumns = @JoinColumn(name = "developer_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id")
+    )
     private List<Technology> technology;
 
 }

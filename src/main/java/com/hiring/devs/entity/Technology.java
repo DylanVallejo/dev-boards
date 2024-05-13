@@ -19,6 +19,7 @@ public class Technology {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     private Boolean is_framework;
@@ -26,10 +27,10 @@ public class Technology {
     @Lob
     private byte[] logo;
 
-    @ManyToMany(mappedBy = "technology")
+    @ManyToMany(mappedBy = "technology", fetch = FetchType.LAZY)
     private List<Position> position;
 
-    @ManyToMany(mappedBy = "technology")
+    @ManyToMany(mappedBy = "technology", fetch = FetchType.LAZY)
     private List<Developer> developer;
 
 

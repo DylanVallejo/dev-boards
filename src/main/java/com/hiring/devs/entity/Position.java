@@ -22,7 +22,12 @@ public class Position {
 
     private String description;
 
-    @ManyToMany
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(
+            name = "position_technology" , joinColumns = @JoinColumn(name = "position_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id")
+    )
     private List<Technology> technology;
 
     @ManyToOne

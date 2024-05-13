@@ -13,4 +13,6 @@ public interface DeveloperMapper {
     DeveloperMapper INSTANCE = Mappers.getMapper( DeveloperMapper.class );
     DeveloperDto developerToDeveloperDto(Developer developer);
 
+    Developer developerToDeveloper (Developer developer);
+
 }
