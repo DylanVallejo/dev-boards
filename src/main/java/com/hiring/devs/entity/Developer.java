@@ -42,7 +42,7 @@ public class Developer {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
     @JoinTable(
             name = "developer_technology", joinColumns = @JoinColumn(name = "developer_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id")

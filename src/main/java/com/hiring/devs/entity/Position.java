@@ -23,14 +23,14 @@ public class Position {
     private String description;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "position_technology" , joinColumns = @JoinColumn(name = "position_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id")
     )
     private List<Technology> technology;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Organization organization;
 
 }

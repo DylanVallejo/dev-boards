@@ -1,6 +1,7 @@
 package com.hiring.devs.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
@@ -27,10 +28,13 @@ public class Technology {
     @Lob
     private byte[] logo;
 
-    @ManyToMany(mappedBy = "technology", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToMany(mappedBy = "technology")
     private List<Position> position;
 
-    @ManyToMany(mappedBy = "technology", fetch = FetchType.LAZY)
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "technology")
     private List<Developer> developer;
 
 

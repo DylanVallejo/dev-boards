@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @Slf4j
@@ -29,4 +31,20 @@ public class TechnologyServiceImpl implements TechnologyService {
         technologyRepository.save(createTechnology);
         return createTechnology;
     }
+
+    @Override
+    public List<Technology> listTechnologys() {
+        List<Technology> tecnologias = technologyRepository.findAll();
+        if (!tecnologias.isEmpty()){
+            return tecnologias;
+        }
+        return List.of(null);
+    }
+
+    @Override
+    public void eliminarTecnologia(Long tecnologiaId) {
+        technologyRepository.deleteById(tecnologiaId);
+    }
+
+
 }
